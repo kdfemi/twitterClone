@@ -1,0 +1,10 @@
+ion-avatar ion-img  {
+  width:var(--cus-avatar-header-img-size) !important;
+  height : var(--cus-avatar-header-img-size) !important;
+  max-width: 100px !important;  //any size
+  max-height: 100px !important; //any size
+}
+ion-avatar {
+  margin-top: var(--cus-avatar-header-margin);
+
+  }
