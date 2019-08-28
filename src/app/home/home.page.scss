@@ -1,10 +1,28 @@
-ion-avatar ion-img  {
-  width:var(--cus-avatar-header-img-size) !important;
-  height : var(--cus-avatar-header-img-size) !important;
-  max-width: 100px !important;  //any size
-  max-height: 100px !important; //any size
+ion-toolbar ion-avatar{
+  margin: auto 1%;
+  margin-right: 5%;
+  width: 30px;
+  height: 30px;
 }
-ion-avatar {
-  margin-top: var(--cus-avatar-header-margin);
+ion-col{
+  padding: 0;
 
-  }
+}
+.tweet-card-metadata{
+  padding: 0;
+  padding-left: 13%;
+}
+.dp{
+  width: 80%;
+  height: 80%; 
+}
+
+.ios.avatar-ios{
+  margin-left: 10%;
+}
+.tweet-impression{
+  margin-top: 2%;
+}
+.tweet-impressions-digit{
+  margin-left: 7%;
+}

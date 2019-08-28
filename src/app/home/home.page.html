@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-avatar role="button" slot="start" role="button" 
+  <ion-toolbar class="ion-no-padding" *ngIf="!toolbarHidden" [@enterAnimation]>
+    <ion-avatar role="button" slot="start" 
     (click)="toggleMenu()"
     class="ion-text-center">
       <ion-img [src]="'/assets/icon/favicon.png'" ></ion-img>
@@ -13,5 +13,126 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content (ionScroll)="logScroll($event)" [scrollEvents]="true">
+  <ion-grid padding-vertical>
+    <ion-row>
+      <ion-col size-sm="8" offset-sm="2">
+        <ion-list lines="full">
+            <ion-item class="ion-no-padding">  
+              <ion-label class="ion-text-wrap ion-no-padding-vertical">
+                <ion-row>
+                    <ion-col size="12" class="tweet-card-metadata">
+                        <span><ion-icon name="heart"></ion-icon> minisoda and 9 others liked</span>
+                      </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col size="2" class="ion-no-padding">
+                    <ion-avatar class="avatar-ios">
+                      <ion-img [src]="'/assets/icon/favicon.png'" class="dp"></ion-img>
+                    </ion-avatar></ion-col>
+                    <ion-col size="10"> <b>Ebony</b><span>@Metrix25. 3h</span>
+                      <p class="ion-no-margin">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque voluptatibus minus ipsum qui ducimus, voluptate, itaque molestiae iusto aperiam soluta dicta nesciunt, in enim saepe. Incidunt magni molestiae repellat dolorum?</p>
+                     </ion-col>
+                </ion-row>
+                <ion-row margin-top>
+                  <ion-col size="3" push="2">
+                    <ion-icon name="chatbubbles" mode="ios"></ion-icon> 
+                    <ion-text class="tweet-impressions-digit">98</ion-text>        
+                  </ion-col>
+                  <ion-col size="3" push="2" (click)="retweetMenu()">
+                      <ion-icon name="repeat" mode="md"></ion-icon>
+                      <ion-text class="tweet-impressions-digit">8</ion-text>     
+                  </ion-col>
+                  <ion-col size="3" push="2">
+                      <ion-icon name="heart-empty"></ion-icon>
+                      <ion-text class="tweet-impressions-digit">9</ion-text>     
+                  </ion-col>
+                  <ion-col size="3" push="2" (click)="shareMenu()">
+                      <ion-icon name="share" mode="md"></ion-icon>
+                  </ion-col>
+                </ion-row>
+              </ion-label>      
+            </ion-item>
+            <ion-item class="ion-no-padding">
+              <ion-label class="ion-text-wrap ion-no-padding-vertical">
+                  <ion-row>
+                      <ion-col size="12" class="tweet-card-metadata">
+                          <span><ion-icon name="heart"></ion-icon> minisoda liked</span>
+                        </ion-col>
+                  </ion-row>
+                <ion-row>
+                  <ion-col size="2" class="ion-no-padding">
+                    <ion-avatar class="avatar-ios">
+                      <ion-img [src]="'/assets/icon/favicon.png'" class="dp"></ion-img>
+                    </ion-avatar></ion-col>
+                  <ion-col size="10"> <b>Ebony</b><span>@Metrix25. 3h</span>
+                   <p class="ion-no-margin">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque voluptatibus minus ipsum qui ducimus, voluptate, itaque molestiae iusto aperiam soluta dicta nesciunt, in enim saepe. Incidunt magni molestiae repellat dolorum?</p>
+                  </ion-col>
+                </ion-row>
+                <ion-row margin-top>
+                    <ion-col size="3" push="2">
+                      <ion-icon name="chatbubbles" mode="ios"></ion-icon> 
+                      <ion-text class="tweet-impressions-digit">98</ion-text>        
+                    </ion-col>
+                    <ion-col size="3" push="2" (click)="retweetMenu()">
+                        <ion-icon name="repeat" mode="md"></ion-icon>
+                        <ion-text class="tweet-impressions-digit">8</ion-text>     
+                    </ion-col>
+                    <ion-col size="3" push="2">
+                        <ion-icon name="heart-empty"></ion-icon>
+                        <ion-text class="tweet-impressions-digit">9</ion-text>     
+                    </ion-col>
+                    <ion-col size="3" push="2" (click)="shareMenu()">
+                        <ion-icon name="share" mode="md"></ion-icon>
+                    </ion-col>
+                  </ion-row>
+              </ion-label>   
+            </ion-item>
+            <ion-item class="ion-no-padding">
+              <ion-label class="ion-text-wrap ion-no-padding-vertical">
+                    <ion-row>
+                        <ion-col size="12" class="tweet-card-metadata" >
+                          <span><ion-icon name="repeat" mode="md"></ion-icon> minisoda retweeted</span>
+                        </ion-col>
+                    </ion-row>    
+                <ion-row>
+
+                  <ion-col size="2" class="ion-no-padding">
+                    <ion-avatar class="avatar-ios">
+                      <ion-img [src]="'/assets/icon/favicon.png'" class="dp"></ion-img>
+                    </ion-avatar></ion-col>
+                  <ion-col size="10"> <b>Ebony</b><span>@Metrix25. 3h</span>
+                   <p class="ion-no-margin">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque voluptatibus minus ipsum qui ducimus, voluptate, itaque molestiae iusto aperiam soluta dicta nesciunt, in enim saepe. Incidunt magni molestiae repellat dolorum?</p>
+                  </ion-col>
+                </ion-row>
+                <ion-row margin-top>
+                    <ion-col size="3" push="2">
+                      <ion-icon name="chatbubbles" mode="ios"></ion-icon> 
+                      <ion-text class="tweet-impressions-digit">98</ion-text>        
+                    </ion-col>
+                    <ion-col size="3" push="2" (click)="retweetMenu()">
+                        <ion-icon name="repeat" mode="md"></ion-icon>
+                        <ion-text class="tweet-impressions-digit">8</ion-text>     
+                    </ion-col>
+                    <ion-col size="3" push="2">
+                        <ion-icon name="heart-empty"></ion-icon>
+                        <ion-text class="tweet-impressions-digit">9</ion-text>     
+                    </ion-col>
+                    <ion-col size="3" push="2" (click)="shareMenu()">
+                        <ion-icon name="share" mode="md"></ion-icon>
+                    </ion-col>
+                  </ion-row>
+              </ion-label>
+            </ion-item>
+            </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row style="height: 40px"></ion-row>
+  </ion-grid>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button mode="md">
+          <ion-icon name="create" mode="md"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
 </ion-content>

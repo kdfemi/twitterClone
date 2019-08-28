@@ -1,9 +1,34 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>message</ion-title>
-  </ion-toolbar>
-</ion-header>
+    <ion-toolbar *ngIf="!toolbarHidden">
+      <ion-avatar role="button" slot="start" role="button" 
+      (click)="toggleMenu()"
+      class="ion-text-center">
+        <ion-img [src]="'/assets/icon/favicon.png'" ></ion-img>
+      </ion-avatar>
+      <ion-label slot="start">
+      <ion-text color="dark">
+          <h1>Message</h1>
+        </ion-text>
+      </ion-label>
+      <ion-buttons slot="end">
+        <ion-button (click)="toggleMenu()">
+          <ion-icon name="settings" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
 
-<ion-content>
-
+<ion-content (ionScroll)="logScroll($event)" [scrollEvents]="true">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6"></ion-col>
+      <ion-col size="6"></ion-col>
+    </ion-row>
+    <ion-row style="height: 40px"></ion-row>
+  </ion-grid>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button mode="ios">
+            <ion-icon name="text" mode="ios"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
 </ion-content>

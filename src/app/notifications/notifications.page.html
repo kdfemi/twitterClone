@@ -1,9 +1,68 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Tab Two
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+    <ion-toolbar *ngIf="!toolbarHidden">
+      <ion-avatar role="button" slot="start" role="button" 
+      (click)="toggleMenu()"
+      class="ion-text-center">
+        <ion-img [src]="'/assets/icon/favicon.png'" ></ion-img>
+      </ion-avatar>
+      <ion-label slot="start">
+      <ion-text color="dark">
+          <h1>Notifications</h1>
+        </ion-text>
+      </ion-label>
+      <ion-buttons slot="end">
+        <ion-button (click)="toggleMenu()">
+          <ion-icon name="settings" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+    <ion-toolbar mode="md">
+        <ion-segment (ionChange)="segmentChanged($event)" mode="md">
+            <ion-segment-button value="all" checked mode="md">
+              <ion-label >All</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="mentions" mode="md">
+              <ion-label >Mentions</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+    </ion-toolbar>
+  </ion-header>
 
-<ion-content></ion-content>
+<ion-content #content
+(ionScroll)="logScroll($event)" [scrollEvents]="true">
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed" >
+        <ion-fab-button mode="md" (click)="generateNotification()">
+          <ion-icon name="create" mode="md"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+      <!-- <ion-list> -->
+        <ion-virtual-scroll [items]="notificationsArray" approxItemHeight="359px">
+          <ion-item *virtualItem="let notification">
+            <ion-label>          
+              <ion-text color="primary">
+                <h3>{{notification.title}}</h3>
+              </ion-text>
+              <ion-text color="primary" text-wrap>
+                <p>{{notification.message}}</p>
+              </ion-text>
+              <ion-text>
+                <p>{{notification.time | date}}</p>
+              </ion-text>
+            </ion-label>
+          </ion-item>
+        </ion-virtual-scroll>
+        <!-- <ion-item *ngFor="let notification of notificationsArray">
+          <ion-label>          
+            <ion-text color="primary">
+              <h3>{{notification.title}}</h3>
+            </ion-text>
+            <ion-text color="primary" text-wrap>
+                <p>{{notification.message}}</p>
+              </ion-text>
+              <ion-text>
+                <p>{{notification.time | date}}</p>
+              </ion-text>
+          </ion-label>
+        </ion-item> -->
+      <!-- </ion-list> -->
+</ion-content>
