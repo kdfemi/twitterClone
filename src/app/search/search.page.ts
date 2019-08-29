@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MenuController } from '@ionic/angular';
+import { AnimateFabService } from '../shared/animate-fab.service';
 
 @Component({
   selector: 'app-search',
@@ -8,9 +9,17 @@ import { MenuController } from '@ionic/angular';
 })
 export class Tab3Page {
 
-  constructor(private menuCtrl: MenuController) {}
+  @ViewChild('fabButton', {static: false}) fabButton: any;
 
-  toggleMenu() {
+  constructor(
+    private menuCtrl: MenuController,
+    private animateFabBtnService: AnimateFabService) {}
+
+    ionViewDidEnter() {
+     this.animateFabBtnService.animate(this.fabButton, 'pen');
+    }
+
+    toggleMenu() {
     this.menuCtrl.toggle('menu');
   }
 }

@@ -1,35 +1,30 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
-import { MenuController, ActionSheetController } from '@ionic/angular';
+import { Component, ViewChild, ElementRef, Output, EventEmitter, Input } from '@angular/core';
+import { MenuController, ActionSheetController, Platform } from '@ionic/angular';
 import { ScrollDetail } from '@ionic/core';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { AnimateFabService } from '../shared/animate-fab.service';
+
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
-  // animations: [
-  //   trigger('enterAnimation', [
-  //     transition(':enter', [
-  //       style({transform: 'translateY(-100%)', opacity: 0}),
-  //       animate('500ms', style({transform: 'translateY(0)', opacity: 1}))
-  //     ]),
-  //     transition(':leave', [
-  //       style({transform: 'translateY(0)', opacity: 1}),
-  //       animate('500ms', style({transform: 'translateY(-100%)', opacity: 0}))
-  //     ])
-  //   ])
-  // ]
+  styleUrls: ['home.page.scss']
 })
 export class HomePage {
 
   @ViewChild('content', {static: false}) contetnt: ElementRef<HTMLIonContentElement>;
-  toolbarHidden = false;
-
+  @ViewChild('position', {static: false}) position: any;
+  @ViewChild('span', {static: false}) span: ElementRef<HTMLSpanElement>;
+  // toolbarHidden = false;
+  @ViewChild('fabButton', {static: false}) fabButton: any;
   constructor(
     private menuCtrl: MenuController,
-    private actionSheetController: ActionSheetController
+    private actionSheetController: ActionSheetController,
+    private animateFabBtnService: AnimateFabService
   ) {}
-
+  ionViewDidEnter() {
+   this.animateFabBtnService.animate(this.fabButton, 'pen');
+  }
   toggleMenu() {
     this.menuCtrl.toggle('menu');
   }
@@ -87,18 +82,5 @@ export class HomePage {
     ).then(actionSheetElement => {
       actionSheetElement.present();
     });
-  }
-
-  logScroll(event: CustomEvent<ScrollDetail>) {
-    const currentY = event.detail.currentY;
-    const startY = event.detail.startY;
-    const velocityY = event.detail.velocityY;
-    if (currentY > startY) {
-      this.toolbarHidden = true;
-    } else if ((currentY < startY) && velocityY < -0.79) {
-        this.toolbarHidden = false;
-    } else if (currentY <= 4) {
-      this.toolbarHidden = false;
-    }
   }
 }

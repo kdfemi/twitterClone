@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MenuController, ActionSheetController } from '@ionic/angular';
 import { ScrollDetail } from '@ionic/core';
+import { AnimateFabService } from '../shared/animate-fab.service';
 
 @Component({
   selector: 'app-message',
@@ -10,8 +11,10 @@ import { ScrollDetail } from '@ionic/core';
 export class MessagePage implements OnInit {
   toolbarHidden = false;
 
+  @ViewChild('fabButton', {static: false}) fabButton: any;
   constructor(
-    private menuCtrl: MenuController
+    private menuCtrl: MenuController,
+    private animateFabBtnService: AnimateFabService
   ) { }
 
   ngOnInit() {
@@ -21,16 +24,8 @@ export class MessagePage implements OnInit {
     this.menuCtrl.toggle('menu');
   }
 
-  logScroll(event: CustomEvent<ScrollDetail>) {
-    const currentY = event.detail.currentY;
-    const startY = event.detail.startY;
-    const velocityY = event.detail.velocityY;
-    if (currentY > startY) {
-      this.toolbarHidden = true;
-    } else if ((currentY < startY) && velocityY < -0.79) {
-        this.toolbarHidden = false;
-    } else if (currentY <= 4) {
-      this.toolbarHidden = false;
-    }
+  ionViewDidEnter() {
+
+    this.animateFabBtnService.animate(this.fabButton, 'msg');
   }
 }

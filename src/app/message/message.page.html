@@ -1,5 +1,5 @@
 <ion-header>
-    <ion-toolbar *ngIf="!toolbarHidden">
+    <ion-toolbar *ngIf="!toolbarHidden" [appScrollVanish]="content">
       <ion-avatar role="button" slot="start" role="button" 
       (click)="toggleMenu()"
       class="ion-text-center">
@@ -18,7 +18,7 @@
     </ion-toolbar>
   </ion-header>
 
-<ion-content (ionScroll)="logScroll($event)" [scrollEvents]="true">
+<ion-content  #content>
   <ion-grid>
     <ion-row>
       <ion-col size="6"></ion-col>
@@ -27,7 +27,7 @@
     <ion-row style="height: 40px"></ion-row>
   </ion-grid>
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-        <ion-fab-button mode="ios">
+        <ion-fab-button mode="ios" #fabButton>
             <ion-icon name="text" mode="ios"></ion-icon>
         </ion-fab-button>
     </ion-fab>

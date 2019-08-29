@@ -3,6 +3,7 @@ import { MenuController, Events } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
 import { SegmentChangeEventDetail, ScrollDetail } from '@ionic/core';
 import { take  } from 'rxjs/operators';
+import { AnimateFabService } from '../shared/animate-fab.service';
 
 @Component({
   selector: 'app-notifications',
@@ -16,8 +17,11 @@ export class Tab2Page implements OnInit {
   notifications = new BehaviorSubject<{title: string, message: string, time: Date}[]>([]);
   @ViewChild('content', {static: false}) contetnt: ElementRef<HTMLIonContentElement>;
   toolbarHidden = false;
+  @ViewChild('fabButton', {static: false}) fabButton: any;
+
   constructor(
-    private menuCtrl: MenuController
+    private menuCtrl: MenuController,
+    private animateFabBtnService: AnimateFabService
   ) {}
 
   ngOnInit() {
@@ -25,6 +29,9 @@ export class Tab2Page implements OnInit {
       this.notificationsArray = notifications;
     });
   }
+ionViewDidEnter() {
+     this.animateFabBtnService.animate(this.fabButton, 'pen');
+}
   toggleMenu() {
     this.menuCtrl.toggle('menu');
   }
@@ -40,18 +47,6 @@ export class Tab2Page implements OnInit {
       );
   }
 
-  logScroll(event: CustomEvent<ScrollDetail>) {
-    const currentY = event.detail.currentY;
-    const startY = event.detail.startY;
-    const velocityY = event.detail.velocityY;
-    if (currentY > startY) {
-      this.toolbarHidden = true;
-    }  else if ((currentY < startY) && velocityY < -0.79) {
-      this.toolbarHidden = false;
-  } else if (currentY <= 4) {
-    this.toolbarHidden = false;
-  }
-  }
 
   generateNotification() {
     this.notifications.next(this.notificationsArray.concat({title: `title ${this.notificationsArray.length + 1}`,

@@ -1,5 +1,5 @@
 <ion-header>
-    <ion-toolbar>
+    <ion-toolbar [appScrollVanish]="content">
       <ion-avatar role="button" slot="start" role="button" 
       (click)="toggleMenu()"
       class="ion-text-center">
@@ -15,9 +15,9 @@
     </ion-toolbar>
   </ion-header>
 
-<ion-content>
+<ion-content #content >
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-        <ion-fab-button mode="md">
+        <ion-fab-button mode="md" #fabButton>
           <ion-icon name="create" mode="md"></ion-icon>
         </ion-fab-button>
     </ion-fab>
