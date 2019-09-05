@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [defaultHref]="navigateBackUrl" (click)="dismiss()" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-searchbar placeholder="Search Twitter" mode="ios" 
+    (search)="search($event)" (ionChange)="keyPressSearch()"
+    [(ngModel)]="searchQuery" #searchBar></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-grid *ngIf="!searchQuery" no-padding>
+        <ion-row>
+          <ion-col size-sm="8" offset-sm = 2 no-padding>
+            <ion-list lines="full" no-padding>
+              <ion-item *ngIf="recentSearchArray.length > 0">
+                <ion-label>Recent</ion-label>
+                <ion-button (click)="clearRecent()" slot="end" fill="clear">
+                  <ion-icon slot="icon-only" name="close-circle" mode="ios"></ion-icon>
+                </ion-button>
+              </ion-item>
+              <ion-item class="recent-search" *ngIf="recentSearchArray.length > 0">
+                <ion-slides [options]="slideOption">
+                  <ion-slide *ngFor="let recentSearch of recentSearchArray">
+                    <ion-label class="search-display-name">
+                      <ion-avatar slot="start" class="text-avatar">
+                          <ion-img [src]="recentSearch.imageUrl"></ion-img>
+                        </ion-avatar>
+                      <p class="recent-search-displayname">{{recentSearch.displayname}}</p>
+                      <p class="recent-search-handle">{{recentSearch.handle}}</p>
+                    </ion-label>
+                  </ion-slide>
+                </ion-slides>
+              </ion-item>
+            </ion-list>
+              
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <!--  -->
+  <ion-grid >
+    <ion-row>
+      <ion-col size-sm="8" offset-sm = 2>
+        <ion-list>
+          <ion-item *ngFor="let name of matched" lines="full">
+              <ion-avatar slot="start">
+                  <ion-img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICTAEAOw=="></ion-img>
+                </ion-avatar>
+            <ion-label>
+              {{name}}
+              <p>@{{name.split(1, name.length-2)}}</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

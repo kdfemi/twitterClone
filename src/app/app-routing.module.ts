@@ -9,7 +9,8 @@ const routes: Routes = [
   {
     path: 'profile',
     loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
-  }
+  },
+  { path: 'searchresult', loadChildren:  () => import('./search/search-result/search-result.module').then( m => m.SearchResultPageModule) }
 ];
 @NgModule({
   imports: [

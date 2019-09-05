@@ -8,8 +8,8 @@
               </ion-avatar>
             </ion-menu-toggle>
             <ion-item lines="none"  class="ion-no-padding ion-no-margin">
-              <ion-icon name="arrow-down" slot="end" *ngIf="toggleDown" (click)="toggleMenu()"></ion-icon> 
-              <ion-icon name="arrow-up" slot="end" *ngIf="!toggleDown" (click)="toggleMenu()"></ion-icon> 
+              <ion-icon name="arrow-down" slot="end" mode="ios" *ngIf="toggleDown" (click)="toggleMenu()"></ion-icon> 
+              <ion-icon name="arrow-up" slot="end" mode="ios" *ngIf="!toggleDown" (click)="toggleMenu()"></ion-icon> 
                 <ion-menu-toggle>
                   <ion-label position="stacked">
                       <ion-text color="secondary" (click)="profileNavigate()">

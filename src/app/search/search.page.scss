@@ -13,3 +13,19 @@ ion-toolbar ion-avatar{
   width: 30px;
   height: 30px;
 }
+.text-avatar{
+  display: inline-block;
+  --border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  --min-height: 20px;
+}
+.card-label span{
+  display: inline-block;
+  margin-top: -100000000px;
+  margin-left: 5px;
+  
+}
+.article-card{
+  --padding-start: 0px;
+}

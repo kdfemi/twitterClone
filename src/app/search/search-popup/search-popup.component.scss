@@ -1,0 +1,31 @@
+ion-slides{
+    display: block;
+}
+.text-avatar{
+    --border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    --min-height: 20px;
+    margin: 0 auto;
+    
+  }
+  .recent-search-displayname{
+    font-size: 13.5px;
+    font-weight: bold;
+    margin: 0;
+    line-height: 2.0;
+    letter-spacing: .8px;
+  }
+  .recent-search-handle{
+    font-size: 12px;
+    margin: 0;
+    margin-top: -7px;
+  }
+
+  .recent-search{
+      --custom-padding-size: 10px;
+    --padding-start: var(--custom-padding-size);
+    --padding-end: var(--custom-padding-size);
+    --padding-top: var(--custom-padding-size);
+    --padding-bottom: var(--custom-padding-size);
+  }

@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ScrollVanishDirective } from './shared/scroll-vanish.directive';
 import { SharedModule } from './shared/shared.module';
+import { SearchResultPage } from './search/search-result/search-result.page';
 
 
 @NgModule({

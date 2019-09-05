@@ -1,6 +1,6 @@
 <ion-header >
   <!-- *ngIf="!toolbarHidden" -->
-  <ion-toolbar class="ion-no-padding" [appScrollVanish]="content" >
+  <ion-toolbar class="ion-no-padding" [appScrollVanish]="content">
     <ion-avatar role="button" slot="start" 
     (click)="toggleMenu()"
     class="ion-text-center">
@@ -17,7 +17,7 @@
 <ion-content  #content >
   <ion-grid padding-vertical>
     <ion-row>
-      <ion-col size-sm="8" offset-sm="2">
+      <ion-col size-sm="8" offset-sm="2" style="min-width: 350px;">
         <ion-list lines="full" #position>
             <ion-item class="ion-no-padding" >  
               <ion-label class="ion-text-wrap ion-no-padding-vertical">
